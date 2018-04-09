@@ -10,10 +10,10 @@ test/node_modules
 
 # logs & pids
 *.log
+yarn-error.log
 pids
 .sass-cache/
 *.css.map
-yarn-error.log
 
 # test output
 test/**/out
