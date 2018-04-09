@@ -14,6 +14,7 @@ export default class MyDocument extends Document {
             <html>
                 <Head>
                     <title>React Photos</title>
+                    <meta name="viewport" content="width=device-width, initial-scale=1" />
                     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet" />
                     <link href="static/css/reset.css" rel="stylesheet" />
                     {this.props.styleTags}

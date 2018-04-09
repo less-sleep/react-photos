@@ -7,10 +7,6 @@ const Wrapper = styled.div`
     width: 100%;
     height: 100%;
     background-color: rgb(235, 235, 235);
-    background-position: center center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-image: url(${props => props.imageUrl});
     overflow: hidden;
 `;
 
@@ -40,19 +36,33 @@ const Title = styled.h3`
     z-index: 1;
 `;
 
-const Picture = styled.a`
+const Picture = styled.picture`
+    display: flex;
+    height: 100%;
+    position: absolute;
     width: 100%;
-    z-index: 1;
+
+    img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
 `;
 
-const Image = props => {
-    const {title, imageUrl, index} = props;
-
+const Image = ({title, baseUrl, imageUrl, index}) => {
     let markup = undefined;
     const title_markup = <Title>{title}</Title>;
 
     return (
-        <Wrapper imageUrl={imageUrl} data-index={index}>
+        <Wrapper data-index={index}>
+            {imageUrl && (
+                <Picture>
+                    <source media={'(min-width: 1200px)'} srcSet={`${baseUrl}/w_300/${imageUrl}`} />
+                    <source media={'(min-width: 800px)'} srcSet={`${baseUrl}/w_400/${imageUrl}`} />
+                    <source media={'(min-width: 480px)'} srcSet={`${baseUrl}/w_480/${imageUrl}`} />
+                    <img srcSet={`${baseUrl}/${imageUrl}`} alt={title} />
+                </Picture>
+            )}
             {title_markup}
         </Wrapper>
     );

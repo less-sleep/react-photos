@@ -138,14 +138,19 @@ var MyDocument = function (_Document) {
                         },
                         'React Photos'
                     ),
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('link', { href: 'https://fonts.googleapis.com/css?family=Roboto+Condensed', rel: 'stylesheet', __source: {
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('meta', { name: 'viewport', content: 'width=device-width, initial-scale=1', __source: {
                             fileName: _jsxFileName,
                             lineNumber: 17
                         }
                     }),
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('link', { href: 'static/css/reset.css', rel: 'stylesheet', __source: {
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('link', { href: 'https://fonts.googleapis.com/css?family=Roboto+Condensed', rel: 'stylesheet', __source: {
                             fileName: _jsxFileName,
                             lineNumber: 18
+                        }
+                    }),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('link', { href: 'static/css/reset.css', rel: 'stylesheet', __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 19
                         }
                     }),
                     this.props.styleTags
@@ -155,19 +160,19 @@ var MyDocument = function (_Document) {
                     {
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 21
+                            lineNumber: 22
                         }
                     },
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_next_document__["Main"], {
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 22
+                            lineNumber: 23
                         }
                     }),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_next_document__["NextScript"], {
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 23
+                            lineNumber: 24
                         }
                     })
                 )

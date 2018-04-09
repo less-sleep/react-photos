@@ -1,7 +1,8 @@
-import react, {Component} from 'react';
+import react, {Component, Fragment} from 'react';
 import styled from 'styled-components';
 import _find from 'lodash/find';
 
+import Loading from '../components/Loading';
 import TitleBar from '../components/TitleBar';
 import Grid from '../components/Grid';
 import ImageLink from '../components/ImageLink';
@@ -14,20 +15,22 @@ const Wrapper = styled.div`
 
 class AlbumPage extends Component {
     state = {
+        baseUrl: '',
         album: undefined,
     };
 
-    createPhotos = photos => {
+    createPhotos = (photos, baseUrl) => {
         const {album} = this.state;
 
         return photos.map(({id, title, url}) => {
             return (
-                <ImageLink 
+                <ImageLink
                     key={id}
                     id={id}
                     link={{pathname: '/photo', query: {albumId: album.id, photoId: id}}}
                     title={title}
                     imageUrl={url}
+                    baseUrl={baseUrl}
                 />
             );
         });
@@ -37,6 +40,7 @@ class AlbumPage extends Component {
         const {url} = this.props;
 
         this.setState(() => ({
+            baseUrl: data.baseUrl,
             album: _find(data.albums, {id: url.query.id}),
         }));
     };
@@ -58,13 +62,33 @@ class AlbumPage extends Component {
     }
 
     render() {
-        const {album} = this.state;
+        const {album, baseUrl} = this.state;
         const photos = album ? album.photos : [];
+
+        let content = undefined;
+
+        if (album && photos.length > 0) {
+            content = (
+                <Fragment>
+                    <TitleBar title={album.title} backLink={'/'} />
+                    {photos.length > 0 ? <Grid>{this.createPhotos(photos, baseUrl)}</Grid> : <p>No Photos</p>}
+                </Fragment>
+            );
+        } else if (album && photos.length === 0) {
+            content = (
+                <Fragment>
+                    <TitleBar title={album.title} backLink={'/'} />
+                    <Loading message={'No Photos'} />
+                </Fragment>
+            );
+        } else {
+            content = <Loading />;
+        }
 
         return (
             <Wrapper>
-                <TitleBar title={'React Photos'} backLink={'/'} />
-                {photos.length > 0 ? <Grid>{this.createPhotos(photos)}</Grid> : <p>No Photos</p>}
+                <TitleBar title={'React Photos'} />
+                {content}
             </Wrapper>
         );
     }

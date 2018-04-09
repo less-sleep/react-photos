@@ -8,8 +8,8 @@ const Wrapper = styled.div`
     & > * {
         width: 100%;
         height: 220px;
-        
-        @media (min-width: 500px) {
+
+        @media (min-width: 480px) {
             width: calc(100% / 2);
         }
 

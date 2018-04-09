@@ -7,6 +7,7 @@ const Wrapper = styled.header`
     height: 50px;
     border-bottom: rgb(234, 234, 234) solid 1px;
     display: flex;
+    overflow: hidden;
 `;
 
 const BackBtn = styled.a`
@@ -15,10 +16,12 @@ const BackBtn = styled.a`
     background-position: center center;
     background-repeat: no-repeat;
     background-image: url('/static/images/icon_back_arrow.svg');
+    border-right: rgb(234, 234, 234) solid 1px;
+    cursor: pointer;
     display: block;
 
     &:hover {
-        background-color: rgb(234, 234, 234);
+        background-color: rgb(244, 244, 244);
     }
 `;
 
@@ -44,7 +47,11 @@ const TitleBar = props => {
 
     return (
         <Wrapper>
-            {backLink && <Link href={backLink}><BackBtn title="Back" /></Link>}
+            {backLink && (
+                <Link href={backLink}>
+                    <BackBtn title="Back" />
+                </Link>
+            )}
             <Title>
                 <TitleInner>{title}</TitleInner>
             </Title>

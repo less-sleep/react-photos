@@ -25,7 +25,7 @@ var _jsxFileName = 'C:\\Users\\Chris.DESKTOP-IGLGDVG\\Documents\\Projects\\react
 var Wrapper = __WEBPACK_IMPORTED_MODULE_1_styled_components__["a" /* default */].div.withConfig({
     displayName: 'Grid__Wrapper',
     componentId: 's143fupq-0'
-})(['flex-direction:row;flex-wrap:wrap;display:flex;& > *{width:100%;height:220px;@media (min-width:500px){width:calc(100% / 2);}@media (min-width:800px){width:calc(100% / 3);}@media (min-width:1200px){width:calc(100% / 4);}@media (min-width:1400px){width:calc(100% / 5);}@media (min-width:1600px){width:calc(100% / 6);}}']);
+})(['flex-direction:row;flex-wrap:wrap;display:flex;& > *{width:100%;height:220px;@media (min-width:480px){width:calc(100% / 2);}@media (min-width:800px){width:calc(100% / 3);}@media (min-width:1200px){width:calc(100% / 4);}@media (min-width:1400px){width:calc(100% / 5);}@media (min-width:1600px){width:calc(100% / 6);}}']);
 
 var Grid = function Grid(props) {
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -87,25 +87,23 @@ var IMAGE_WIDTH = '100%';
 var Wrapper = __WEBPACK_IMPORTED_MODULE_1_styled_components__["a" /* default */].div.withConfig({
     displayName: 'Image__Wrapper',
     componentId: 's1rdrlm7-0'
-})(['position:relative;width:100%;height:100%;background-color:rgb(235,235,235);background-position:center center;background-size:cover;background-repeat:no-repeat;background-image:url(', ');overflow:hidden;'], function (props) {
-    return props.imageUrl;
-});
+})(['position:relative;width:100%;height:100%;background-color:rgb(235,235,235);overflow:hidden;']);
 
 var Title = __WEBPACK_IMPORTED_MODULE_1_styled_components__["a" /* default */].h3.withConfig({
     displayName: 'Image__Title',
     componentId: 's1rdrlm7-1'
 })(['position:absolute;width:100%;left:0;bottom:0;font-family:\'Roboto Condensed\',Arial,Helvetica,Verdana,sans-serif;font-size:1.4em;line-height:1.4em;color:rgb(255,255,255);margin:0;padding:15px 18px 12px;background:-moz-linear-gradient(top,rgba(0,0,0,0) 0%,rgba(0,0,0,0.75) 100%);background:-webkit-linear-gradient( top,rgba(0,0,0,0) 0%,rgba(0,0,0,0.75) 100% );background:linear-gradient( to bottom,rgba(0,0,0,0) 0%,rgba(0,0,0,0.75) 100% );filter:progid:DXImageTransform.Microsoft.gradient( startColorstr=\'#00000000\',endColorstr=\'#a6000000\',GradientType=0 );z-index:1;']);
 
-var Picture = __WEBPACK_IMPORTED_MODULE_1_styled_components__["a" /* default */].a.withConfig({
+var Picture = __WEBPACK_IMPORTED_MODULE_1_styled_components__["a" /* default */].picture.withConfig({
     displayName: 'Image__Picture',
     componentId: 's1rdrlm7-2'
-})(['width:100%;z-index:1;']);
+})(['display:flex;height:100%;position:absolute;width:100%;img{width:100%;height:auto;object-fit:cover;}']);
 
-var Image = function Image(props) {
-    var title = props.title,
-        imageUrl = props.imageUrl,
-        index = props.index;
-
+var Image = function Image(_ref) {
+    var title = _ref.title,
+        baseUrl = _ref.baseUrl,
+        imageUrl = _ref.imageUrl,
+        index = _ref.index;
 
     var markup = undefined;
     var title_markup = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -113,7 +111,7 @@ var Image = function Image(props) {
         {
             __source: {
                 fileName: _jsxFileName,
-                lineNumber: 52
+                lineNumber: 54
             }
         },
         title
@@ -121,11 +119,40 @@ var Image = function Image(props) {
 
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         Wrapper,
-        { imageUrl: imageUrl, 'data-index': index, __source: {
+        { 'data-index': index, __source: {
                 fileName: _jsxFileName,
-                lineNumber: 55
+                lineNumber: 57
             }
         },
+        imageUrl && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            Picture,
+            {
+                __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 59
+                }
+            },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('source', { media: '(min-width: 1200px)', srcSet: baseUrl + '/w_300/' + imageUrl, __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 60
+                }
+            }),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('source', { media: '(min-width: 800px)', srcSet: baseUrl + '/w_400/' + imageUrl, __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 61
+                }
+            }),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('source', { media: '(min-width: 480px)', srcSet: baseUrl + '/w_480/' + imageUrl, __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 62
+                }
+            }),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { srcSet: baseUrl + '/' + imageUrl, alt: title, __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 63
+                }
+            })
+        ),
         title_markup
     );
 };
@@ -236,6 +263,69 @@ var _default = ImageLink;
 
 /***/ }),
 
+/***/ "./components/Loading.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(module) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("./node_modules/react/cjs/react.development.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_styled_components__ = __webpack_require__("./node_modules/styled-components/dist/styled-components.browser.es.js");
+var _jsxFileName = 'C:\\Users\\Chris.DESKTOP-IGLGDVG\\Documents\\Projects\\react-photos\\components\\Loading.js';
+
+
+(function () {
+    var enterModule = __webpack_require__("./node_modules/react-hot-loader/index.js").enterModule;
+
+    enterModule && enterModule(module);
+})();
+
+
+
+var Wrapper = __WEBPACK_IMPORTED_MODULE_1_styled_components__["a" /* default */].div.withConfig({
+    displayName: 'Loading__Wrapper',
+    componentId: 'fk96ey-0'
+})(['position:absolute;align-items:center;display:flex;justify-content:center;height:100%;overflow:hidden;width:100%;']);
+
+var Loading = function Loading(_ref) {
+    var _ref$message = _ref.message,
+        message = _ref$message === undefined ? 'Loading' : _ref$message;
+
+    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        Wrapper,
+        {
+            __source: {
+                fileName: _jsxFileName,
+                lineNumber: 14
+            }
+        },
+        message
+    );
+};
+
+var _default = Loading;
+/* harmony default export */ __webpack_exports__["a"] = (_default);
+;
+
+(function () {
+    var reactHotLoader = __webpack_require__("./node_modules/react-hot-loader/index.js").default;
+
+    var leaveModule = __webpack_require__("./node_modules/react-hot-loader/index.js").leaveModule;
+
+    if (!reactHotLoader) {
+        return;
+    }
+
+    reactHotLoader.register(Wrapper, 'Wrapper', 'C:/Users/Chris.DESKTOP-IGLGDVG/Documents/Projects/react-photos/components/Loading.js');
+    reactHotLoader.register(Loading, 'Loading', 'C:/Users/Chris.DESKTOP-IGLGDVG/Documents/Projects/react-photos/components/Loading.js');
+    reactHotLoader.register(_default, 'default', 'C:/Users/Chris.DESKTOP-IGLGDVG/Documents/Projects/react-photos/components/Loading.js');
+    leaveModule(module);
+})();
+
+;
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__("./node_modules/webpack/buildin/harmony-module.js")(module)))
+
+/***/ }),
+
 /***/ "./components/TitleBar.js":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -260,12 +350,12 @@ var _jsxFileName = 'C:\\Users\\Chris.DESKTOP-IGLGDVG\\Documents\\Projects\\react
 var Wrapper = __WEBPACK_IMPORTED_MODULE_1_styled_components__["a" /* default */].header.withConfig({
     displayName: 'TitleBar__Wrapper',
     componentId: 's1cpxzxu-0'
-})(['position:relative;width:100%;height:50px;border-bottom:rgb(234,234,234) solid 1px;display:flex;']);
+})(['position:relative;width:100%;height:50px;border-bottom:rgb(234,234,234) solid 1px;display:flex;overflow:hidden;']);
 
 var BackBtn = __WEBPACK_IMPORTED_MODULE_1_styled_components__["a" /* default */].a.withConfig({
     displayName: 'TitleBar__BackBtn',
     componentId: 's1cpxzxu-1'
-})(['height:50px;width:50px;background-position:center center;background-repeat:no-repeat;background-image:url(\'/static/images/icon_back_arrow.svg\');display:block;&:hover{background-color:rgb(234,234,234);}']);
+})(['height:50px;width:50px;background-position:center center;background-repeat:no-repeat;background-image:url(\'/static/images/icon_back_arrow.svg\');border-right:rgb(234,234,234) solid 1px;cursor:pointer;display:block;&:hover{background-color:rgb(244,244,244);}']);
 
 var Title = __WEBPACK_IMPORTED_MODULE_1_styled_components__["a" /* default */].h2.withConfig({
     displayName: 'TitleBar__Title',
@@ -287,19 +377,19 @@ var TitleBar = function TitleBar(props) {
         {
             __source: {
                 fileName: _jsxFileName,
-                lineNumber: 46
+                lineNumber: 49
             }
         },
         backLink && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             __WEBPACK_IMPORTED_MODULE_2_next_link___default.a,
             { href: backLink, __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 47
+                    lineNumber: 51
                 }
             },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(BackBtn, { title: 'Back', __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 47
+                    lineNumber: 52
                 }
             })
         ),
@@ -308,7 +398,7 @@ var TitleBar = function TitleBar(props) {
             {
                 __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 48
+                    lineNumber: 55
                 }
             },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -316,7 +406,7 @@ var TitleBar = function TitleBar(props) {
                 {
                     __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 49
+                        lineNumber: 56
                     }
                 },
                 title
@@ -9445,9 +9535,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_styled_components__ = __webpack_require__("./node_modules/styled-components/dist/styled-components.browser.es.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_lodash_find__ = __webpack_require__("./node_modules/lodash/find.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_lodash_find___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_lodash_find__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_TitleBar__ = __webpack_require__("./components/TitleBar.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_Grid__ = __webpack_require__("./components/Grid.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_ImageLink__ = __webpack_require__("./components/ImageLink.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_Loading__ = __webpack_require__("./components/Loading.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_TitleBar__ = __webpack_require__("./components/TitleBar.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_Grid__ = __webpack_require__("./components/Grid.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_ImageLink__ = __webpack_require__("./components/ImageLink.js");
 var _jsxFileName = 'C:\\Users\\Chris.DESKTOP-IGLGDVG\\Documents\\Projects\\react-photos\\pages\\album.js';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -9465,6 +9556,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 
 
 
@@ -9494,8 +9586,9 @@ var AlbumPage = function (_Component) {
         }
 
         return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = AlbumPage.__proto__ || Object.getPrototypeOf(AlbumPage)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
+            baseUrl: '',
             album: undefined
-        }, _this.createPhotos = function (photos) {
+        }, _this.createPhotos = function (photos, baseUrl) {
             var album = _this.state.album;
 
 
@@ -9504,15 +9597,16 @@ var AlbumPage = function (_Component) {
                     title = _ref2.title,
                     url = _ref2.url;
 
-                return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__components_ImageLink__["a" /* default */], {
+                return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6__components_ImageLink__["a" /* default */], {
                     key: id,
                     id: id,
                     link: { pathname: '/photo', query: { albumId: album.id, photoId: id } },
                     title: title,
                     imageUrl: url,
+                    baseUrl: baseUrl,
                     __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 25
+                        lineNumber: 27
                     }
                 });
             });
@@ -9522,6 +9616,7 @@ var AlbumPage = function (_Component) {
 
             _this.setState(function () {
                 return {
+                    baseUrl: data.baseUrl,
                     album: __WEBPACK_IMPORTED_MODULE_2_lodash_find___default()(data.albums, { id: url.query.id })
                 };
             });
@@ -9550,42 +9645,91 @@ var AlbumPage = function (_Component) {
     }, {
         key: 'render',
         value: function render() {
-            var album = this.state.album;
+            var _state = this.state,
+                album = _state.album,
+                baseUrl = _state.baseUrl;
 
             var photos = album ? album.photos : [];
+
+            var content = undefined;
+
+            if (album && photos.length > 0) {
+                content = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    __WEBPACK_IMPORTED_MODULE_0_react__["Fragment"],
+                    {
+                        __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 72
+                        }
+                    },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__components_TitleBar__["a" /* default */], { title: album.title, backLink: '/', __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 73
+                        }
+                    }),
+                    photos.length > 0 ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        __WEBPACK_IMPORTED_MODULE_5__components_Grid__["a" /* default */],
+                        {
+                            __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 74
+                            }
+                        },
+                        this.createPhotos(photos, baseUrl)
+                    ) : __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'p',
+                        {
+                            __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 74
+                            }
+                        },
+                        'No Photos'
+                    )
+                );
+            } else if (album && photos.length === 0) {
+                content = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    __WEBPACK_IMPORTED_MODULE_0_react__["Fragment"],
+                    {
+                        __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 79
+                        }
+                    },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__components_TitleBar__["a" /* default */], { title: album.title, backLink: '/', __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 80
+                        }
+                    }),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__components_Loading__["a" /* default */], { message: 'No Photos', __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 81
+                        }
+                    })
+                );
+            } else {
+                content = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__components_Loading__["a" /* default */], {
+                    __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 85
+                    }
+                });
+            }
 
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 Wrapper,
                 {
                     __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 65
+                        lineNumber: 89
                     }
                 },
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__components_TitleBar__["a" /* default */], { title: 'React Photos', backLink: '/', __source: {
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__components_TitleBar__["a" /* default */], { title: 'React Photos', __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 66
+                        lineNumber: 90
                     }
                 }),
-                photos.length > 0 ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    __WEBPACK_IMPORTED_MODULE_4__components_Grid__["a" /* default */],
-                    {
-                        __source: {
-                            fileName: _jsxFileName,
-                            lineNumber: 67
-                        }
-                    },
-                    this.createPhotos(photos)
-                ) : __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'p',
-                    {
-                        __source: {
-                            fileName: _jsxFileName,
-                            lineNumber: 67
-                        }
-                    },
-                    'No Photos'
-                )
+                content
             );
         }
     }, {
