@@ -1,6 +1,7 @@
 # build output
 dist
 .next
+.vscode
 
 # dependencies
 node_modules
@@ -12,6 +13,7 @@ test/node_modules
 pids
 .sass-cache/
 *.css.map
+yarn-error.log
 
 # test output
 test/**/out
