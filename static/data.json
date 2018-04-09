@@ -1,0 +1,67 @@
+{
+    "baseUrl": "http://res.cloudinary.com/carnold/image/upload",
+    "albums": [
+        {
+            "id": "0",
+            "title": "Lille - Day 1",
+            "photos": [
+                {
+                    "id": "0",
+                    "title": "Statue",
+                    "url": "v1522656826/react-photos/IMG_20160408_172847.jpg"
+                },
+                {
+                    "id": "1",
+                    "title": "Newly renovated Lille Cathedral",
+                    "url": "v1522656824/react-photos/IMG_20160408_160007.jpg"
+                },
+                {
+                    "id": "2",
+                    "title": "Interior of Lille Cathedral",
+                    "url": "v1522656825/react-photos/IMG_20160408_155644.jpg"
+                },
+                {
+                    "id": "3",
+                    "title": "Lille Old Town Gate",
+                    "url": "v1522656820/react-photos/IMG_20160408_154610.jpg"
+                },
+                {
+                    "id": "4",
+                    "title": "War Memorial",
+                    "url": "v1522656816/react-photos/IMG_20160408_141327.jpg"
+                }
+            ]
+        },
+        {
+            "id": "1",
+            "title": "Lille - Day 2",
+            "photos": [
+                {
+                    "id": "5",
+                    "title": "Lille City Centre",
+                    "url": "v1522656821/react-photos/IMG_20160408_140952.jpg"
+                },
+                {
+                    "id": "6",
+                    "title": "Lille Town Hall",
+                    "url": "v1522656819/react-photos/IMG_20160408_140948.jpg"
+                },
+                {
+                    "id": "7",
+                    "title": "Lille Opera House",
+                    "url": "v1522656819/react-photos/IMG_20160408_140945.jpg"
+                },
+                {
+                    "id": "8",
+                    "title": "Capybara at Lille Zoo",
+                    "url": "v1522656819/react-photos/IMG_20160408_110724.jpg"
+                },
+                {
+                    "id": "9",
+                    "title": "Meerkats at Lille Zoo",
+                    "url": "v1522656823/react-photos/IMG_20160408_105103.jpg"
+                }
+            ]
+        }
+    ]
+}
