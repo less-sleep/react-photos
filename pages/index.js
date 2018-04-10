@@ -40,12 +40,6 @@ class IndexPage extends Component {
         });
     };
 
-    /* getInitialProps = async ({req}) => {
-        const res = await fetch('static/data.json');
-        const json = await res.json();
-        this.update(data);
-    }; */
-
     componentDidMount() {
         fetch('/static/data.json')
             .then(res => {
@@ -57,7 +51,6 @@ class IndexPage extends Component {
     }
 
     render() {
-        console.log(this.props);
         const {albums, baseUrl} = this.state;
 
         let content = undefined;

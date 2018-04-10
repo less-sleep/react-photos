@@ -45,12 +45,6 @@ class AlbumPage extends Component {
         }));
     };
 
-    /* getInitialProps = async ({req}) => {
-        const res = await fetch('static/data.json');
-        const json = await res.json();
-        this.update(data);
-    }; */
-
     componentDidMount() {
         fetch('/static/data.json')
             .then(res => {
