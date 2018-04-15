@@ -1,5 +1,6 @@
 import react, {Component} from 'react';
 import styled from 'styled-components';
+import fetch from 'isomorphic-unfetch';
 
 import Loading from '../components/Loading';
 import TitleBar from '../components/TitleBar';
@@ -13,9 +14,12 @@ const Wrapper = styled.div`
 `;
 
 class IndexPage extends Component {
-    state = {
-        baseUrl: '',
-        albums: [],
+    static getInitialProps = async ({query}) => {
+        const baseUrl = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : '';
+        const res = await fetch(`${baseUrl}/static/data.json`);
+        const json = await res.json();
+
+        return {baseUrl, imageBaseUrl: json.baseUrl, albums: [...json.albums]};
     };
 
     createAlbums = (albums, baseUrl) => {
@@ -33,30 +37,13 @@ class IndexPage extends Component {
         });
     };
 
-    update = data => {
-        this.setState({
-            baseUrl: data.baseUrl,
-            albums: [...data.albums],
-        });
-    };
-
-    componentDidMount() {
-        fetch('/static/data.json')
-            .then(res => {
-                return res.json();
-            })
-            .then(json => {
-                this.update(json);
-            });
-    }
-
     render() {
-        const {albums, baseUrl} = this.state;
+        const {albums, imageBaseUrl} = this.props;
 
         let content = undefined;
 
         if (albums && albums.length > 0) {
-            content = <Grid>{this.createAlbums(albums, baseUrl)}</Grid>;
+            content = <Grid>{this.createAlbums(albums, imageBaseUrl)}</Grid>;
         } else if (albums && albums.length === 0) {
             content = <Loading message={'No Albums'} />;
         } else {

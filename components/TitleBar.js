@@ -10,7 +10,7 @@ const Wrapper = styled.header`
     overflow: hidden;
 `;
 
-const BackBtn = styled.a`
+const BackBtn = styled.span`
     height: 50px;
     width: 50px;
     background-position: center center;
@@ -48,8 +48,10 @@ const TitleBar = props => {
     return (
         <Wrapper>
             {backLink && (
-                <Link href={backLink}>
-                    <BackBtn title="Back" />
+                <Link href={backLink} prefetch>
+                    <a>
+                        <BackBtn title="Back" />
+                    </a>
                 </Link>
             )}
             <Title>

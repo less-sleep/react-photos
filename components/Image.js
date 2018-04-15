@@ -60,7 +60,7 @@ const Image = ({title, baseUrl, imageUrl, index}) => {
                     <source media={'(min-width: 1200px)'} srcSet={`${baseUrl}/w_300/${imageUrl}`} />
                     <source media={'(min-width: 800px)'} srcSet={`${baseUrl}/w_400/${imageUrl}`} />
                     <source media={'(min-width: 480px)'} srcSet={`${baseUrl}/w_480/${imageUrl}`} />
-                    <img srcSet={`${baseUrl}/${imageUrl}`} alt={title} />
+                    <img src={`${baseUrl}/${imageUrl}`} alt={title} />
                 </Picture>
             )}
             {title_markup}

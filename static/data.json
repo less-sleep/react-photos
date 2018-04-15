@@ -1,5 +1,5 @@
 {
-    "baseUrl": "http://res.cloudinary.com/carnold/image/upload",
+    "baseUrl": "https://res.cloudinary.com/carnold/image/upload",
     "albums": [
         {
             "id": "0",

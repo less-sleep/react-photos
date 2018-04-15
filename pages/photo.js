@@ -20,43 +20,31 @@ const Content = styled.div`
 `;
 
 class PhotoPage extends Component {
-    state = {
-        baseUrl: '',
-        photo: undefined,
+    static getInitialProps = async ({query}) => {
+        const baseUrl = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : '';
+        const res = await fetch(`${baseUrl}/static/data.json`);
+        const json = await res.json();
+        const album = _find(json.albums, {id: query.albumId});
+
+        return {baseUrl, imageBaseUrl: json.baseUrl, photo: _find(album.photos, {id: query.photoId})};
     };
-
-    update = data => {
-        const {url} = this.props;
-        const album = _find(data.albums, {id: url.query.albumId});
-
-        this.setState(() => ({
-            baseUrl: data.baseUrl,
-            photo: _find(album.photos, {id: url.query.photoId}),
-        }));
-    };
-
-    componentDidMount() {
-        fetch('/static/data.json')
-            .then(res => {
-                return res.json();
-            })
-            .then(json => {
-                this.update(json);
-            });
-    }
 
     render() {
-        const {photo, baseUrl} = this.state;
-        const {url} = this.props;
+        const {baseUrl, photo, imageBaseUrl, url} = this.props;
+
+        console.log(baseUrl, imageBaseUrl);
 
         let content = undefined;
 
         if (photo) {
             content = (
                 <Fragment>
-                    <TitleBar title={photo.title} backLink={{pathname: '/album', query: {id: url.query.albumId}}} />
+                    <TitleBar
+                        title={photo.title}
+                        backLink={{pathname: `${baseUrl}/album`, query: {id: url.query.albumId}}}
+                    />
                     <Content>
-                        <Slide imageUrl={photo.url} baseUrl={baseUrl} title={photo.title} />
+                        <Slide imageUrl={photo.url} baseUrl={imageBaseUrl} title={photo.title} />
                     </Content>
                 </Fragment>
             );
