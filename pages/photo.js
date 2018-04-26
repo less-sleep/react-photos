@@ -21,30 +21,23 @@ const Content = styled.div`
 
 class PhotoPage extends Component {
     static getInitialProps = async ({query}) => {
-        const baseUrl = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : '';
-        const res = await fetch(`${baseUrl}/static/data.json`);
-        const json = await res.json();
+        const json = require('../static/data.json');
         const album = _find(json.albums, {id: query.albumId});
 
-        return {baseUrl, imageBaseUrl: json.baseUrl, photo: _find(album.photos, {id: query.photoId})};
+        return {baseUrl: json.baseUrl, photo: _find(album.photos, {id: query.photoId})};
     };
 
     render() {
-        const {baseUrl, photo, imageBaseUrl, url} = this.props;
-
-        console.log(baseUrl, imageBaseUrl);
+        const {photo, baseUrl, url} = this.props;
 
         let content = undefined;
 
         if (photo) {
             content = (
                 <Fragment>
-                    <TitleBar
-                        title={photo.title}
-                        backLink={{pathname: `${baseUrl}/album`, query: {id: url.query.albumId}}}
-                    />
+                    <TitleBar title={photo.title} backLink={{pathname: `/album`, query: {id: url.query.albumId}}} />
                     <Content>
-                        <Slide imageUrl={photo.url} baseUrl={imageBaseUrl} title={photo.title} />
+                        <Slide imageUrl={photo.url} baseUrl={baseUrl} title={photo.title} />
                     </Content>
                 </Fragment>
             );

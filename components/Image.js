@@ -8,6 +8,12 @@ const Wrapper = styled.div`
     height: 100%;
     background-color: rgb(235, 235, 235);
     overflow: hidden;
+    opacity: 0;
+    transition: opacity 150ms ease-in-out;
+
+    &.show {
+        opacity: 1;
+    }
 `;
 
 const Title = styled.h3`
@@ -54,7 +60,7 @@ const Image = ({title, baseUrl, imageUrl, index}) => {
     const title_markup = <Title>{title}</Title>;
 
     return (
-        <Wrapper data-index={index}>
+        <Wrapper className={'show'} data-index={index}>
             {imageUrl && (
                 <Picture>
                     <source media={'(min-width: 1200px)'} srcSet={`${baseUrl}/w_300/${imageUrl}`} />

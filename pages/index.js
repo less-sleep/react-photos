@@ -1,6 +1,5 @@
 import react, {Component} from 'react';
 import styled from 'styled-components';
-import fetch from 'isomorphic-unfetch';
 
 import Loading from '../components/Loading';
 import TitleBar from '../components/TitleBar';
@@ -14,12 +13,9 @@ const Wrapper = styled.div`
 `;
 
 class IndexPage extends Component {
-    static getInitialProps = async ({query}) => {
-        const baseUrl = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : '';
-        const res = await fetch(`${baseUrl}/static/data.json`);
-        const json = await res.json();
-
-        return {baseUrl, imageBaseUrl: json.baseUrl, albums: [...json.albums]};
+    static getInitialProps = async ({query, req}) => {
+        const json = require('../static/data.json');
+        return {baseUrl: json.baseUrl, albums: [...json.albums]};
     };
 
     createAlbums = (albums, baseUrl) => {
@@ -38,12 +34,12 @@ class IndexPage extends Component {
     };
 
     render() {
-        const {albums, imageBaseUrl} = this.props;
+        const {albums, baseUrl} = this.props;
 
         let content = undefined;
 
         if (albums && albums.length > 0) {
-            content = <Grid>{this.createAlbums(albums, imageBaseUrl)}</Grid>;
+            content = <Grid>{this.createAlbums(albums, baseUrl)}</Grid>;
         } else if (albums && albums.length === 0) {
             content = <Loading message={'No Albums'} />;
         } else {

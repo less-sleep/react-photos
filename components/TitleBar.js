@@ -30,16 +30,21 @@ const Title = styled.h2`
     font-family: 'Roboto Condensed', Arial, Helvetica, Verdana, sans-serif;
     font-size: 1.2em;
     line-height: 1.2em;
-    color: rgb(0, 0, 0);
     margin: 0 0 0 15px;
     padding: 3px 0 0;
-    display: table;
-`;
+    align-items: center;
+    display: flex;
 
-const TitleInner = styled.span`
-    height: 100%;
-    vertical-align: middle;
-    display: table-cell;
+    a,
+    a:link,
+    a:visited {
+        color: rgba(0, 0, 0, 0.67);
+        text-decoration: none;
+    }
+
+    a:hover {
+        color: rgba(0, 0, 0, 1);
+    }
 `;
 
 const TitleBar = props => {
@@ -55,7 +60,9 @@ const TitleBar = props => {
                 </Link>
             )}
             <Title>
-                <TitleInner>{title}</TitleInner>
+                <Link href={'/'} prefetch>
+                    <a>{title}</a>
+                </Link>
             </Title>
         </Wrapper>
     );
